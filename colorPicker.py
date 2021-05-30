@@ -6,7 +6,7 @@ def empty(a):
         pass
 
 
-def colorPicker(image):
+def colorPicker(image,Scalling_Ratio):
 
     cv2.namedWindow("TrackBars")
     cv2.resizeWindow("TrackBars",640,240)
@@ -32,8 +32,8 @@ def colorPicker(image):
             upper = np.array([h_max,s_max,v_max])
             mask=cv2.inRange(imgHSV,lower,upper)
             imgResult=cv2.bitwise_and(image,image,mask=mask)
-            imgStack = stackImages(0.6,([image,imgResult,imgHSV]))
-            cv2.imshow("Stacked Images 1. original 2. Result 3.HSV",imgStack)
+            imgStack = stackImages(Scalling_Ratio,([image,imgResult],[imgHSV,mask]))
+            cv2.imshow("Stacked Images- From top left clockwise 1. original 2. Result 3.Mask 4.HSV",imgStack)
             
             if cv2.waitKey(1) & 0xFF == 27:
                 break
