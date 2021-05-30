@@ -37,8 +37,3 @@ def colorPicker(image):
             
             if cv2.waitKey(1) & 0xFF == 27:
                 break
-
-path = 'resources/car.png'
-img=cv2.imread(path)
-
-colorPicker(img)
