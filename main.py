@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 from stackimages import stackImages
 
-frameWidth = 1800
-frameHeight = 1500
+frameWidth = 1280
+frameHeight = 720
 cap = cv2.VideoCapture(0)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
@@ -71,5 +71,6 @@ while True:
     imgMirror=np.flip(imgResult,1)
     
     cv2.imshow("Result", imgMirror)
+    print(imgMirror.shape)
     if cv2.waitKey(1) ==27:
         break
