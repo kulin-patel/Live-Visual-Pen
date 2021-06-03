@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from stackimages import stackImages
+import time
 
 frameWidth = 1280
 frameHeight = 720
@@ -8,7 +8,8 @@ cap = cv2.VideoCapture(0)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 cap.set(10,150)
-
+pTime = 0
+cTime = 0
 
 
 myColors = [[0,120,157,20,255,255]] #orange
@@ -59,6 +60,7 @@ def drawOnCanvas(myPoints,PenColors):
 
 while True:
     success, img = cap.read()
+    img= cv2.flip(img,1)
     imgResult= img.copy()
     newPoints = findColor(img, myColors,PenColors) 
 
@@ -68,9 +70,13 @@ while True:
     if len(myPoints)!=0:
         drawOnCanvas(myPoints,PenColors)
     
-    imgMirror=np.flip(imgResult,1)
+    #Write frame rate
+    cTime = time.time()
+    fps = 1 / (cTime - pTime)
+    pTime = cTime
+    cv2.putText(imgResult, "FPS= " + str(int(fps)), (10, 20), cv2.FONT_HERSHEY_PLAIN, 1,(0, 0, 0), 1)
     
-    cv2.imshow("Result", imgMirror)
-    print(imgMirror.shape)
+    cv2.imshow("Result", imgResult)
+    
     if cv2.waitKey(1) ==27:
         break
