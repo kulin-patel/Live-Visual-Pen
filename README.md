@@ -1,5 +1,7 @@
 # Live-Visual-Pen
 
-This is old version. Doen't work good. I have upadated it by combining with hand-tacking tool.
+I have made some technical changes to make it look more fluid.(In new version)
+I have upadated it by combining with my hand-tacking tool.
 
-That repository is private till I optimise my code and make it more readable/understandable.
+This is old version. Doesn't work good.
+(New version repository is private till I optimise my code and make it more readable/understandable.)
